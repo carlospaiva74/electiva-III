@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 #Controller
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\ProductosController;
 
 
 /*
@@ -26,3 +27,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('admin/categorias',CategoriasController::class);
+Route::resource('admin/productos',ProductosController::class);
+Route::post('admin/productos-fotos',[ProductosController::class,'fotos'])->name('productos.fotos');

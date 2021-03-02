@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
         <title>Electiva III - Carlos Paiva</title> 
+        <link rel="stylesheet" type="text/css" href="{{asset('css/theme.min.css')}}">
         <link href="{{asset('css/snackbar.min.css')}}" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="{{asset('css/sweetalert.css')}}">
         <link href="{{asset('css/loader.css')}}" rel="stylesheet" type="text/css" />
@@ -13,6 +14,7 @@
         <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('css/plugins.css')}}" rel="stylesheet" type="text/css" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
+
         @yield('css')
         <style>
             .layout-px-spacing {

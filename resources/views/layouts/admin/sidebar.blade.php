@@ -30,7 +30,7 @@
                         </li>
 
                         <li class="menu">
-                            <a href="#" aria-expanded="false" class="dropdown-toggle"
+                            <a href="{{route('productos.index')}}" aria-expanded="false" class="dropdown-toggle"
                             <?php if (request()->is('admin/productos','admin/productos/*')) {
                                     echo 'data-active="true"';
                                 } ?>  
