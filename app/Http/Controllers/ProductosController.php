@@ -47,6 +47,7 @@ class ProductosController extends Controller
         $producto->id_categoria = $request->categoria;
         $producto->precio       = $request->precio;
         $producto->stock        = $request->stock;
+        $producto->descripcion  = $request->descripcion;
         $producto->save();
 
         if (is_null($request->foto)==false) {
@@ -130,6 +131,7 @@ class ProductosController extends Controller
         $producto->id_categoria = $request->categoria;
         $producto->precio       = $request->precio;
         $producto->stock        = $request->stock;
+        $producto->descripcion  = $request->descripcion;
         $producto->save();
 
         $fotos = Fotos::where('id_producto',$producto->id)->delete();

@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <h6>Producto <strong class="text-danger">*</strong></h6>
         <input type="text" name="producto" class="form-control @error('producto') is-invalid @enderror"
-            placeholder="Categoría" 
+            placeholder="Nombre del producto" 
             maxlength="60" 
             required="required" 
             value="{{old('producto')}}" 
@@ -22,7 +22,7 @@
             @foreach($categorias as $key)
                 <option value="{{$key->id}}"
                     <?php if(old('categoria') == $key->id){echo 'selected="selected"';} ?>
-                    > {{$key->fuente}}
+                    > {{$key->nombre}}
                 </option>
             @endforeach
         </select>

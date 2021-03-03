@@ -43,7 +43,7 @@
                                         <tr>
                                             <td style="font-size: 18px;">{{$i++}}</td>
                                             <td style="font-size: 18px;">{{$key->producto}}</td>
-                                            <td style="font-size: 18px;">{{$key->precio}}</td>
+                                            <td style="font-size: 18px;">{{money($key->precio)}}</td>
                                             <td>
 
                                                 <a href="{{route('productos.edit',$key->id)}}" 
