@@ -61,7 +61,11 @@
                       </a>                      
                     </li>                  
                       
-                 
+                    <li>
+                      <a class="dropdown-item d-flex align-items-center" href="{{route('pedidos.index')}}">
+                        <i class="czi-bag mr-2"></i> Mis Compras
+                      </a>                      
+                    </li>
 
                     <li>
                       <a class="dropdown-item d-flex align-items-center" href="{{route('logout')}}" 

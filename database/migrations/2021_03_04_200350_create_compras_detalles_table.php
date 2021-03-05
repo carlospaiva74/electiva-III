@@ -22,6 +22,7 @@ class CreateComprasDetallesTable extends Migration
             $table->unsignedBigInteger('id_producto');
             $table->foreign('id_producto')->references('id')->on('productos')->onDelete('cascade');
 
+            $table->integer('cantidad');
 
             $table->timestamps();
         });

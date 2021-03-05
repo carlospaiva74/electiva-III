@@ -50,7 +50,7 @@
                     
                     
                     <a class="btn btn-secondary mt-3 mr-3" href="{{asset('')}}">Ir al inicio</a>
-                    <a class="btn btn-primary mt-3" href="#">
+                    <a class="btn btn-primary mt-3" href="{{route('pedidos.show',$compra->id)}}">
                       Ver pedido
                     </a>
                   </center>

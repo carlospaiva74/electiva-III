@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Compras;
+use Auth;
 
 class ComprasController extends Controller
 {
@@ -12,8 +14,9 @@ class ComprasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $compras = Compras::where('id_user',Auth::user()->id)->get();
+        return view('pedidos.index',compact('compras'));
     }
 
     /**
@@ -23,7 +26,7 @@ class ComprasController extends Controller
      */
     public function create()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -34,7 +37,7 @@ class ComprasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -45,7 +48,8 @@ class ComprasController extends Controller
      */
     public function show($id)
     {
-        //
+        $compra = Compras::find($id);
+        return view('pedidos.detalles',compact('compra'));
     }
 
     /**
@@ -56,7 +60,7 @@ class ComprasController extends Controller
      */
     public function edit($id)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -68,7 +72,7 @@ class ComprasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -79,6 +83,6 @@ class ComprasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        abort(404);
     }
 }

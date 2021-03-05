@@ -126,6 +126,7 @@ class CarritoController extends Controller
             $detalles = new Detalles();
             $detalles->id_compra = $compra->id;
             $detalles->id_producto = $key['producto'];
+            $detalles->cantidad    = $key['cantidad'];
             $detalles->save();
         }
 
