@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Productos;
 
+use App\Models\Compras;
+use App\Models\Compras_detalles as Detalles;
+use Auth;
+
 class CarritoController extends Controller
 {
 
@@ -87,4 +91,52 @@ class CarritoController extends Controller
         return redirect()->back()->with('success','Producto eliminado del carrito');
     }
 
+    public function compra(Request $request){
+
+        if (is_null($request->direccion)) {
+            return redirect()->back();
+        }else{
+            $total = DireccionesController::total();
+            $direccion = $request->direccion;
+            return view('compras',compact('total','direccion'));
+        }
+    }
+
+    public function pagar(Request $request){
+
+        $carrito = \Session::get('carrito');
+
+        if ($carrito==NULL or $carrito=='') {
+            $carrito=array();
+        }
+
+        if (count($carrito)==0) {
+            return redirect()->route('carrito.index');
+        }
+
+        $code = generar_code(16);
+
+        $compra = new Compras();
+        $compra->id_user = Auth::user()->id;
+        $compra->numero_compra = $code;
+        $compra->id_direccion = $request->direccion;
+        $compra->save();
+
+        foreach ($carrito as $key) {
+            $detalles = new Detalles();
+            $detalles->id_compra = $compra->id;
+            $detalles->id_producto = $key['producto'];
+            $detalles->save();
+        }
+
+        session(['carrito'=>NULL]);
+
+        return redirect()->route('carrito.gracias',$compra->id);
+    }
+
+    public function gracias ($id){
+
+        $compra = Compras::find($id);
+        return view('gracias',compact('compra'));
+    }
 }

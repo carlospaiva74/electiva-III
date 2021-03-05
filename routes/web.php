@@ -35,6 +35,10 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::resource('direcciones',DireccionesController::class);
 
+	Route::get('carrito/caja',[CarritoController::class,'compra'])->name('carrito.compra');
+	Route::post('carrito/pagar',[CarritoController::class,'pagar'])->name('carrito.pagar');
+	Route::get('carrito/gracias/{id}',[CarritoController::class,'gracias'])->name('carrito.gracias');
+
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 	Route::resource('admin/categorias',CategoriasController::class);
 	Route::resource('admin/productos',ProductosController::class);

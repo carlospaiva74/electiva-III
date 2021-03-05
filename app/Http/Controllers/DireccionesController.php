@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Direcciones;
 use App\Models\Estados;
+use App\Models\Productos;
 use Auth;
 
 use App\Http\Requests\DireccionesRequest;
@@ -16,6 +17,31 @@ class DireccionesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    static function total(){
+        $total = 0;
+
+        $carrito = \Session::get('carrito');
+
+        if ($carrito==NULL or $carrito=='') {
+            $carrito=array();
+        }
+
+        $productos = array();
+
+        foreach ($carrito as $key) {
+
+            $producto = Productos::find($key['producto']);
+
+            if (is_null($producto)==false) {
+                $total = $total + ($producto->precio * $key['cantidad']);
+            }
+        }    
+
+        return $total;
+    }
+
+    
     public function index()
     {
         $direcciones = Direcciones::where('id_user',Auth::user()->id)->get();
@@ -23,7 +49,8 @@ class DireccionesController extends Controller
         if ($direcciones->count()==0) {
             return redirect()->route('direcciones.create');
         }else{
-            return view('direcciones.index',compact('direcciones'));
+            $total = $this->total();
+            return view('direcciones.index',compact('direcciones','total'));
         }
     }
 
@@ -36,7 +63,8 @@ class DireccionesController extends Controller
     {
         $estados = Estados::all();
         $json = $this->ubicaciones($estados);
-        return view('direcciones.create',compact('estados','json'));
+        $total = $this->total();
+        return view('direcciones.create',compact('estados','json','total'));
     }
 
     /**
@@ -99,7 +127,8 @@ class DireccionesController extends Controller
         ]);
 
         $json = $this->ubicaciones($estados);
-        return view('direcciones.edit',compact('id','estados','json'));
+        $total = $this->total();
+        return view('direcciones.edit',compact('id','estados','json','total'));
 
     }
 

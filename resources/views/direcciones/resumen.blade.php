@@ -4,7 +4,7 @@
                 <h2 class="widget-title text-center">TOTAL</h2>                    
               </div>
               <h3 class="font-weight-normal text-center my-2" id="total-compra">
-                {{money(0)}}
+                {{money($total)}}
               </h3>
             </div>
         </aside>

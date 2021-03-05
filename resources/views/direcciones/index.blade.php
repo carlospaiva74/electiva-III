@@ -20,9 +20,18 @@
             	<div class="card">
             		<div class="card-body">
             			<div class="p-2">
-            				<center><h4 class="h4 mb-2">Selecciona una dirección</h4></center>
+
+                    <div class="row">
+                      <div class="col-md-7">
+                        <center><h4 class="h4 mb-2">Selecciona una dirección</h4></center><br>
+                      </div>
+                      <div class="col-md-5">
+                        <a class="btn btn-outline-primary btn-shadow float-right " href="{{route('direcciones.create')}}">Registrar</a>
+                      </div>
+                    </div>
+
             				<br>
-            				<form action="#" method="post">
+            				<form action="{{route('carrito.compra')}}" method="get">
             					<div class="table-responsive font-size-md">
                                     <table class="table table-hover mb-0">
                                       <thead>
@@ -37,8 +46,8 @@
                                             <tr>
                                               <td class="py-3 align-middle">
                                                 <div class="custom-control custom-radio">
-                                                  <input class="custom-control-input" type="radio" id="ex-radio-{{$key->id}}" name="direccion"
-
+                                                  <input class="custom-control-input" type="radio" id="ex-radio-{{$key->id}}" name="direccion" required="required"
+                                                  value="{{$key->id}}"
                                                   <?php  
                                                     if ($check=='Y') {
                                                         echo 'checked="checked"';
@@ -68,7 +77,7 @@
                                     </table>
                                   </div>
             				    <center>
-                                    <a class="btn btn-primary btn-shadow btn-block mt-4" href="{{route('direcciones.index')}}"><i class="czi-card font-size-lg mr-2"></i>Continuar</a>
+                                    <button type='submit' class="btn btn-primary btn-shadow btn-block mt-4"><i class="czi-card font-size-lg mr-2"></i>Continuar</button>
                                 </center>
                             </form>            				
             			</div>
