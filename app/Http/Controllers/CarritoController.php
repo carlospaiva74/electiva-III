@@ -9,7 +9,33 @@ class CarritoController extends Controller
 {
 
     public function index(){
-        return \Session::get('carrito');
+        $carrito = \Session::get('carrito');
+
+        if ($carrito==NULL or $carrito=='') {
+            $carrito=array();
+        }
+
+        $productos = array();
+
+        foreach ($carrito as $key) {
+
+            $producto = Productos::find($key['producto']);
+
+            if (is_null($producto)==false) {
+
+                $data = [
+                    "id"       => $producto->id,
+                    "producto" => $producto->producto,
+                    "foto"     => $producto->portada(),
+                    "precio"   => $producto->precio,
+                    "cantidad" => $key['cantidad'],
+                ];
+
+                array_push($productos, $data);
+            }
+        }    
+
+        return view('carrito',compact('productos'));
     }
 
     public function add(Request $request){

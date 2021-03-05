@@ -8,6 +8,8 @@ use App\Http\Controllers\ProductosController;
 
 use App\Http\Controllers\PortalController;
 use App\Http\Controllers\CarritoController;
+use App\Http\Controllers\DireccionesController;
+use App\Http\Controllers\ComprasController;
 
 
 /*
@@ -31,8 +33,9 @@ Route::post('cart/remove',[CarritoController::class,'remove'])->name('carrito.re
 Auth::routes();
 Route::middleware(['auth'])->group(function(){
 
-	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+	Route::resource('direcciones',DireccionesController::class);
 
+	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 	Route::resource('admin/categorias',CategoriasController::class);
 	Route::resource('admin/productos',ProductosController::class);
 	Route::post('admin/productos-fotos',[ProductosController::class,'fotos'])->name('productos.fotos');
