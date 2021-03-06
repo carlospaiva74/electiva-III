@@ -5,7 +5,7 @@
         <a class="navbar-brand d-none d-lg-block mr-3 flex-shrink-0" href="{{asset('')}}" style="min-width: 7rem;">
           <h3 class="text-white h4 m-0 p-0">ELECTIVA III</h3>
         </a>
-        <a class="navbar-brand d-lg-none mr-2" href="#" style="min-width: 2.125rem;">
+        <a class="navbar-brand d-lg-none mr-2" href="{{asset('')}}" style="min-width: 2.125rem;">
           <h3 class="text-white h4 m-0 p-0">ELECTIVA III</h3>
         </a>
             <form class="input-group-overlay d-none d-lg-block mx-4" action="{{asset('')}}" method="get">

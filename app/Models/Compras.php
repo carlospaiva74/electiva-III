@@ -12,4 +12,8 @@ class Compras extends Model
     public function detalles () {
      	return $this->hasMany(Compras_detalles::class, 'id_compra', 'id');    
     }
+
+    public function direccion (){
+        return $this->belongsTo(Direcciones::class,'id_direccion');
+    }
 }

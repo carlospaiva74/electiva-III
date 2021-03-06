@@ -33,6 +33,56 @@
             </div>
 
             <br>
+            <div class="card">
+              <div class="card-body">
+                <center><h4>Dirección de entrega</h4></center> 
+                <div class="table-responsive font-size-md">
+                  <table class="table table-hover mb-0">        
+                      <tbody>
+                        <tr>
+                          <th class="bg-dark text-white" style="width: 35%;">Nombre</th>
+                          <td>
+                            {{$compra->direccion->nombre}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <th class="bg-dark text-white" style="width: 35%;">Teléfono</th>
+                          <td>
+                            {{$compra->direccion->telefono}}
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <th class="bg-dark text-white" style="width: 35%;">Estado</th>
+                          <td>{{$compra->direccion->estado->estado}}</td>
+                        </tr>
+                        <tr>
+                          <th class="bg-dark text-white" style="width: 35%;">Municipio</th>
+                          <td>
+                            {{$compra->direccion->municipio->municipio}}
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <th class="bg-dark text-white" style="width: 35%;">Parroquia</th>
+                          <td>
+                            {{$compra->direccion->parroquia->parroquia}}
+                          </td>
+                        </tr>     
+
+                        <tr>
+                          <th class="bg-dark text-white" style="width: 35%;">Dirección</th>
+                          <td>
+                            {{$compra->direccion->direccion}}
+                          </td>
+                        </tr>      
+                      </tbody>
+                  </table>
+                </div>
+                <br>
+              </div>
+            </div>
+            <br>
 
             <div class="card">
                 <div class="card-body">

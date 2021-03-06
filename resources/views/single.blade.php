@@ -2,6 +2,17 @@
 @extends('layouts.app')
 
 @section('content')
+
+  <style type="text/css">
+    .product-badge.product-no-disponible{
+      background: #f34770;
+      color: #fff;
+    }
+    .product-badge.product-no-disponible::after {
+      border-bottom-color: #f34770;
+    }
+  </style>
+
     <div class="page-title-overlap bg-banner pt-4" style="background: #607d8b;">
       <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
         <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">

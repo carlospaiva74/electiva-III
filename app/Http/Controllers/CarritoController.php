@@ -128,6 +128,11 @@ class CarritoController extends Controller
             $detalles->id_producto = $key['producto'];
             $detalles->cantidad    = $key['cantidad'];
             $detalles->save();
+
+            $producto = Productos::find($key['producto']);
+
+            $producto->stock = $producto->stock - $key['cantidad'];
+            $producto->save();
         }
 
         session(['carrito'=>NULL]);
